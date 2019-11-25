@@ -32,21 +32,21 @@ titanic.info()
 # Embarked : 승객이 배에 승선한곳, 결측값 수 : 2
 
 #%% Survived
-titanic.groupby('Survived').count()
+titanic.groupby('Survived').count()['PassengerId']
 sns.countplot(data = titanic, x = 'Survived')
 
 #%% Pclass & Survived correlationship
 
 # 선실등급별 승객수
-test = titanic.groupby('Pclass').count()
+titanic.groupby('Pclass').count()['PassengerId']
 sns.countplot(data = titanic, x = 'Pclass')
 # 1등급 : 216, 2등급 : 184, 3등급 491
 
 # 선실등급별 생존/사망 승객수
-test = titanic.groupby(['Pclass', 'Survived']).count()
+titanic.groupby(['Pclass', 'Survived']).count()['PassengerId']
 sns.countplot(data = titanic, x = 'Pclass', hue = 'Survived')
-# 1등급에서 3등급으로 갈수록 생존비율이 현저히 떨어진다.
 
+# 1등급에서 3등급으로 갈수록 생존비율이 현저히 떨어진다.
 #%% Name & Survived correlationship
 
 # 포지션 뽑는 함수 생성
